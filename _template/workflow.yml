@@ -1,0 +1,23 @@
+# Copie para .github/workflows/{{PASTA}}.yml e ajuste os passos.
+name: "{{PASTA}}"
+
+on:
+  push:
+    paths:
+      - "{{PASTA}}/**"
+      - ".github/workflows/{{PASTA}}.yml"
+  pull_request:
+    paths:
+      - "{{PASTA}}/**"
+      - ".github/workflows/{{PASTA}}.yml"
+
+defaults:
+  run:
+    working-directory: "{{PASTA}}"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # adicione aqui setup de linguagem, serviços (ex.: postgres) e o comando de testes
