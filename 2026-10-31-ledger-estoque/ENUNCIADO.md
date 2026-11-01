@@ -24,11 +24,11 @@ Construa uma API de controle de estoque em que o saldo nunca é editado diretame
 
 ## Critérios de aceite (o que os testes devem provar)
 
-- [ ] A mesma `Idempotency-Key` enviada 20 vezes em paralelo gera uma única movimentação.
-- [ ] 50 `OUT` concorrentes em um saldo de 10 unidades nunca deixam o saldo negativo.
-- [ ] `as_of` antes da primeira movimentação devolve 0, e `as_of` no instante exato de uma movimentação a inclui.
-- [ ] Quantidade zero ou negativa devolve `422`.
-- [ ] O saldo calculado pela API bate com a soma das movimentações no banco.
+- [x] A mesma `Idempotency-Key` enviada 20 vezes em paralelo gera uma única movimentação.
+- [x] 50 `OUT` concorrentes em um saldo de 10 unidades nunca deixam o saldo negativo.
+- [x] `as_of` antes da primeira movimentação devolve 0, e `as_of` no instante exato de uma movimentação a inclui.
+- [x] Quantidade zero ou negativa devolve `422`.
+- [x] O saldo calculado pela API bate com a soma das movimentações no banco.
 
 ## Tecnologias sugeridas
 
