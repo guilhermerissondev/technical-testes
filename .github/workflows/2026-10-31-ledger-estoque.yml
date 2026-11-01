@@ -1,0 +1,47 @@
+name: "2026-10-31-ledger-estoque"
+
+on:
+  push:
+    paths:
+      - "2026-10-31-ledger-estoque/**"
+      - ".github/workflows/2026-10-31-ledger-estoque.yml"
+  pull_request:
+    paths:
+      - "2026-10-31-ledger-estoque/**"
+      - ".github/workflows/2026-10-31-ledger-estoque.yml"
+
+defaults:
+  run:
+    working-directory: "2026-10-31-ledger-estoque"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: ledger
+          POSTGRES_PASSWORD: ledger
+          POSTGRES_DB: ledger_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ledger -d ledger_test"
+          --health-interval 2s
+          --health-timeout 3s
+          --health-retries 15
+    env:
+      TEST_DATABASE_URL: postgresql+psycopg://ledger:ledger@localhost:5432/ledger_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          working-directory: "2026-10-31-ledger-estoque"
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest
+      - name: Build da imagem Docker
+        run: docker build -t ledger-estoque .
