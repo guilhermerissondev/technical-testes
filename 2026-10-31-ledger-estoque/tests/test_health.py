@@ -1,5 +1,6 @@
 import pytest
 
+# Faz todos os testes async deste arquivo rodarem no event loop configurado em conftest.py.
 pytestmark = pytest.mark.anyio
 
 

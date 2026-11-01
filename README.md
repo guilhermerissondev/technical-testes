@@ -26,6 +26,7 @@ O histórico de todos os testes recebidos, com status, está em [`testes_enviado
 - **Cada teste é autocontido.** Dependências, `Dockerfile`, `docker-compose.yml` e configuração de testes ficam dentro da pasta do teste. Nada é compartilhado entre testes, então dá para apagar ou mover uma pasta sem quebrar as outras.
 - **`ENUNCIADO.md` não muda depois de registrado.** Dúvidas e interpretações do enunciado vão no `README.md` do teste, na seção de decisões.
 - **`README.md` do teste** segue o modelo em `_template/README.md`: como rodar, como testar, decisões técnicas e o que faltou.
+- **Código legível e explicado.** Nomes claros, funções pequenas e comentários que explicam o *porquê* (a decisão, o risco evitado), não o que a linha faz. Módulos e funções não óbvias têm docstring. Quem lê o código deve entender a solução sem precisar do autor.
 - **Status em `testes_enviados.md`:** `Não iniciado`, `Em andamento`, `Concluído` ou `Abandonado`. Atualize a linha ao começar e ao terminar.
 - **Commits** com o nome da pasta como escopo, por exemplo `ledger-estoque: adiciona endpoint de movimentações`.
 
